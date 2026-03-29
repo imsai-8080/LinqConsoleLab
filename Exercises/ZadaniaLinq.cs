@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using LinqConsoleLab.PL.Data;
 
 namespace LinqConsoleLab.PL.Exercises;
@@ -16,7 +17,11 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie01_StudenciZWarszawy()
     {
-        throw Niezaimplementowano(nameof(Zadanie01_StudenciZWarszawy));
+        var query = from s in DaneUczelni.Studenci 
+            where s.Miasto.Equals("Warsaw")
+            select $"{s.NumerIndeksu}, {s.Imie}, {s.Nazwisko}, {s.Miasto}";
+        return query;
+        //trow Niezaimplementowano(nameof(Zadanie01_StudenciZWarszawy));
     }
 
     /// <summary>
@@ -30,7 +35,10 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie02_AdresyEmailStudentow()
     {
-        throw Niezaimplementowano(nameof(Zadanie02_AdresyEmailStudentow));
+        var query = from s in DaneUczelni.Studenci
+            select s.Email;
+        return query;
+        //throw Niezaimplementowano(nameof(Zadanie02_AdresyEmailStudentow));
     }
 
     /// <summary>
@@ -45,6 +53,10 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie03_StudenciPosortowani()
     {
+        var query = from s in DaneUczelni.Studenci
+            orderby s.Nazwisko, s.Imie
+            select $"{s.NumerIndeksu}, {s.Imie}, {s.Nazwisko}"; 
+        return query;
         throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
     }
 
@@ -60,6 +72,7 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie04_PierwszyPrzedmiotAnalityczny()
     {
+ 
         throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
     }
 
