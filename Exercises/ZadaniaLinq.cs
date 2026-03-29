@@ -72,8 +72,13 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie04_PierwszyPrzedmiotAnalityczny()
     {
- 
-        throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
+
+        var query = DaneUczelni.Przedmioty
+            .Where(s => s.Kategoria.Equals("Analytics"))
+            .FirstOrDefault();
+        if (query == null) return new List<string>() { "Nie znaleziono takiego przedmiotu" };
+        return new List<string>() {$"{query.Nazwa}, {query.DataStartu}"};   
+        //throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
     }
 
     /// <summary>
@@ -90,7 +95,11 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie05_CzyIstniejeNieaktywneZapisanie()
     {
-        throw Niezaimplementowano(nameof(Zadanie05_CzyIstniejeNieaktywneZapisanie));
+        var query = DaneUczelni.Zapisy
+            .Any(p => p.CzyAktywny == false);
+        if (query) return  new List<string>() {"Tak"};
+        else return  new List<string>() {"Nie"};
+        //throw Niezaimplementowano(nameof(Zadanie05_CzyIstniejeNieaktywneZapisanie));
     }
 
     /// <summary>
