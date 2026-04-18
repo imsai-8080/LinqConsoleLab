@@ -1,5 +1,6 @@
 using System.Reflection.Metadata;
 using LinqConsoleLab.PL.Data;
+using LinqConsoleLab.PL.Models;
 
 namespace LinqConsoleLab.PL.Exercises;
 
@@ -57,7 +58,7 @@ public sealed class ZadaniaLinq
             orderby s.Nazwisko, s.Imie
             select $"{s.NumerIndeksu}, {s.Imie}, {s.Nazwisko}"; 
         return query;
-        throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
+        //throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
     }
 
     /// <summary>
@@ -114,7 +115,10 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie06_CzyWszyscyProwadzacyMajaKatedre()
     {
-        throw Niezaimplementowano(nameof(Zadanie06_CzyWszyscyProwadzacyMajaKatedre));
+        var query = DaneUczelni.Prowadzacy.All(p => !string.IsNullOrEmpty(p.Katedra));
+        if (query) return  new List<string>() {"Tak"};
+        else return  new List<string>() {"Nie"};
+        //throw Niezaimplementowano(nameof(Zadanie06_CzyWszyscyProwadzacyMajaKatedre));
     }
 
     /// <summary>
@@ -128,7 +132,9 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie07_LiczbaAktywnychZapisow()
     {
-        throw Niezaimplementowano(nameof(Zadanie07_LiczbaAktywnychZapisow));
+        var query = DaneUczelni.Zapisy.Count(p => p.CzyAktywny);
+        return new List<string>() { query.ToString() };
+        //throw Niezaimplementowano(nameof(Zadanie07_LiczbaAktywnychZapisow));
     }
 
     /// <summary>
@@ -142,7 +148,14 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie08_UnikalneMiastaStudentow()
     {
-        throw Niezaimplementowano(nameof(Zadanie08_UnikalneMiastaStudentow));
+        var query = DaneUczelni.Studenci
+            .Select(s => s.Miasto)
+            .Where(m => !string.IsNullOrEmpty(m))
+            .Distinct()
+            .OrderBy(m => m)
+            .ToList();
+        return query;
+        //throw Niezaimplementowano(nameof(Zadanie08_UnikalneMiastaStudentow));
     }
 
     /// <summary>
@@ -157,7 +170,12 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie09_TrzyNajnowszeZapisy()
     {
-        throw Niezaimplementowano(nameof(Zadanie09_TrzyNajnowszeZapisy));
+        var query = DaneUczelni.Zapisy
+            .OrderByDescending(z => z.DataZapisu)
+            .Take(3)
+            .Select(z => $"{z.DataZapisu} | Student: {z.StudentId} | Przedmiot: {z.PrzedmiotId}");
+        return query;
+        //throw Niezaimplementowano(nameof(Zadanie09_TrzyNajnowszeZapisy));
     }
 
     /// <summary>
@@ -173,7 +191,14 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie10_DrugaStronaPrzedmiotow()
     {
-        throw Niezaimplementowano(nameof(Zadanie10_DrugaStronaPrzedmiotow));
+        var query = DaneUczelni.Przedmioty
+            .OrderBy(p => p.Nazwa)
+            .Skip(2)
+            .Take(2)
+            .Select(p => $"{p.Nazwa}, {p.Kategoria}")
+            .ToList();
+        return query;
+        //throw Niezaimplementowano(nameof(Zadanie10_DrugaStronaPrzedmiotow));
     }
 
     /// <summary>

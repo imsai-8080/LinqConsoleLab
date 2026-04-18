@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "S3xl7ZBrAIM=",
+  "dgSpecHash": "EFQeTYBdMeM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\s32304\\Downloads\\LinqConsoleLab.PL\\LinqConsoleLab.PL\\LinqConsoleLab.PL.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\user\\RiderProjects\\LinqConsoleLab\\LinqConsoleLab.PL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.14\\microsoft.netcore.app.host.win-x64.9.0.14.nupkg.sha512"
+  ],
   "logs": []
 }
